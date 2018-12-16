@@ -10,8 +10,20 @@ class FormatOutputTest < Minitest::Test
 
   def test_that_it_has_a_version_number
     refute_nil(::FormatOutput::VERSION)
+    assert(::FormatOutput::VERSION.frozen?)
     assert(::FormatOutput::VERSION.is_a?(String))
     assert(/\A\d+\.\d+\.\d+/ =~ ::FormatOutput::VERSION)
   end
 
+  def test_that_it_has_a_description
+    refute_nil(::FormatOutput::DESCRIPTION)
+    assert(::FormatOutput::DESCRIPTION.frozen?)
+    assert(::FormatOutput::DESCRIPTION.is_a?(String))
+  end
+
+  def test_that_it_has_an_other_stuff_too
+    refute_nil(::FormatOutput::BulletPointBuilder)
+    refute_nil(::FormatOutput::ColumnBuilder)
+  end
+  
 end
