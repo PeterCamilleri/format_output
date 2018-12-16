@@ -3,7 +3,7 @@
 # Print out data in neat columns.
 module FormatOutput
 
-  # A class to display data in columns.
+  # A class to build columns for display.
   class ColumnBuilder
 
     #Prepare a blank page.

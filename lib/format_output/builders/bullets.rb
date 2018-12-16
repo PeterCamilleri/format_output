@@ -3,7 +3,7 @@
 # Print out bullet points.
 module FormatOutput
 
-  # A class to display data in bullet points.
+  # A class to build bullet points for display.
   class BulletPointBuilder
 
     #Prepare a blank slate.
