@@ -6,14 +6,14 @@ module FormatOutput
   # A class to build bullet points for display.
   class BulletPointBuilder
 
-    #Prepare a blank slate.
+    # Prepare a blank slate.
     def initialize(page_width)
       @page_width  = page_width
       @bullet_data = []
       @key_length  = nil
     end
 
-    #Add items to these bullet points.
+    # Add items to these bullet points.
     def add(bullet, *items)
       items.each do |item|
         @bullet_data << [bullet.to_s, item]
@@ -21,7 +21,7 @@ module FormatOutput
       end
     end
 
-    #Render the bullet points as an array of strings.
+    # Render the bullet points as an array of strings.
     def render
       @key_length, results = get_key_length, []
 
@@ -35,12 +35,12 @@ module FormatOutput
 
     private
 
-    #Allowing for a trailing space, how large is the largest bullet?
+    # Allowing for a trailing space, how large is the largest bullet?
     def get_key_length
       (@bullet_data.max_by {|line| line[0].length})[0].length + 1
     end
 
-    #Render one bullet point.
+    # Render one bullet point.
     def render_bullet(key, item)
       result = []
 
