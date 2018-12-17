@@ -27,14 +27,14 @@ class FormatOutputTest < Minitest::Test
   end
 
   def test_that_keeps_a_page_width
-    assert_equal(80, FormatOutput.page_width)
-    FormatOutput.page_width = '40'
-    assert_equal(40, FormatOutput.page_width)
-    assert_raises {FormatOutput.page_width = 2}
-    assert_raises {FormatOutput.page_width = 'apple'}
-    assert_equal(40, FormatOutput.page_width)
-    FormatOutput.page_width = 80
-    assert_equal(80, FormatOutput.page_width)
+    assert_equal(80, ::FormatOutput.page_width)
+    ::FormatOutput.page_width = '40'
+    assert_equal(40, ::FormatOutput.page_width)
+    assert_raises {::FormatOutput.page_width = 2}
+    assert_raises {::FormatOutput.page_width = 'apple'}
+    assert_equal(40, ::FormatOutput.page_width)
+    ::FormatOutput.page_width = 80
+    assert_equal(80, ::FormatOutput.page_width)
   end
 
 end
