@@ -5,21 +5,21 @@
 class Array
 
   # Print out the array as bullet points.
-  def puts_format_output_bullets(page_width = 80)
+  def puts_format_output_bullets(page_width = ::FormatOutput.page_width)
     puts format_output_bullets(page_width)
   end
 
   # Convert the array to strings with bullet points.
   # Returns: A string.
   # Endemic Code Smells  :reek:FeatureEnvy -- false positive.
-  def format_output_bullets(page_width = 80)
+  def format_output_bullets(page_width = ::FormatOutput.page_width)
     format_output_raw_bullets(page_width).join("\n")
   end
 
   # Convert the array to strings with bullet points.
   # Returns: An array of strings.
   # Endemic Code Smells  :reek:FeatureEnvy -- false positive.
-  def format_output_raw_bullets(page_width = 80)
+  def format_output_raw_bullets(page_width = ::FormatOutput.page_width)
     return [""] if empty?
 
     builder = FormatOutput::BulletPointBuilder.new(page_width)

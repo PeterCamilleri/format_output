@@ -11,4 +11,17 @@ require_relative "format_output/version"
 # The format output facility. Neat columns and bullet points for all!
 module FormatOutput
 
+  @page_width = 80
+
+  # Get the default page width.
+  def self.page_width
+    @page_width
+  end
+
+  # Set the default page width.
+  def self.page_width=(value)
+    fail "Invalid page width #{new_width}." if (new_width = value.to_i) < 20
+    @page_width = new_width
+  end
+
 end
