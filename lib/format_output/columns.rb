@@ -18,7 +18,6 @@ class Array
 
   # Convert the array to strings with efficient columns.
   # Returns: An array of strings.
-  # Endemic Code Smells :reek:FeatureEnvy -- false positive.
   def format_output_raw_columns(page_width = ::FormatOutput.page_width)
     builder = FormatOutput::ColumnBuilder.new(page_width)
 
