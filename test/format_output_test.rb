@@ -26,7 +26,7 @@ class FormatOutputTest < Minitest::Test
     refute_nil(::FormatOutput::ColumnBuilder)
   end
 
-  def test_that_keeps_a_page_width
+  def test_that_it_keeps_a_page_width
     assert_equal(80, ::FormatOutput.page_width)
     ::FormatOutput.page_width = '40'
     assert_equal(40, ::FormatOutput.page_width)
