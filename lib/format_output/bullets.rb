@@ -20,7 +20,7 @@ class Array
   # Returns: An array of strings.
   # Endemic Code Smells  :reek:FeatureEnvy -- false positive.
   def format_output_raw_bullets(page_width = 80)
-    return "" if empty?
+    return [""] if empty?
 
     builder = FormatOutput::BulletPointBuilder.new(page_width)
 
