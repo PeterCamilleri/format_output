@@ -27,6 +27,8 @@ class Array
     builder.render
   end
 
+  # Helper methods for the ColumnBuilder
+
   # Get the widest element of an array.
   # Returns: The width of the widest string in the array.
   def format_output_greatest_width
