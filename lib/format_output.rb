@@ -20,7 +20,8 @@ module FormatOutput
 
   # Set the default page width.
   def self.page_width=(value)
-    fail "Invalid page width #{new_width}." if (new_width = value.to_i) < 20
+    new_width = value.to_i
+    fail "Invalid page width #{new_width}." unless (20..256) === new_width
     @page_width = new_width
   end
 
