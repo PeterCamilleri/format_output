@@ -13,13 +13,13 @@ class Array
   # Returns: A string.
   # Endemic Code Smells reek:FeatureEnvy -- false positive.
   def format_output_columns(page_width = 80)
-    raw_format_output_columns(page_width).join("\n")
+    format_output_raw_columns(page_width).join("\n")
   end
 
   # Convert the array to strings with efficient columns.
   # Returns: An array of strings.
   # Endemic Code Smells :reek:FeatureEnvy -- false positive.
-  def raw_format_output_columns(page_width = 80)
+  def format_output_raw_columns(page_width = 80)
     builder = FormatOutput::ColumnBuilder.new(page_width)
 
     each {|item| builder.add(item)}
@@ -27,11 +27,9 @@ class Array
     builder.render
   end
 
-  alias :format_description :raw_format_output_columns
-
   # Get the widest element of an array.
   # Returns: The width of the widest string in the array.
-  def format_output_column_width
+  def format_output_greatest_width
     max_by {|item| item.length}.length
   end
 

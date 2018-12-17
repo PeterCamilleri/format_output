@@ -1,6 +1,7 @@
 # coding: utf-8
 
-require_relative "format_output/columns/columns"
+require_relative "format_output/columns"
+require_relative "format_output/bullets"
 
 require_relative "format_output/builders/bullet_builder"
 require_relative "format_output/builders/column_builder"
