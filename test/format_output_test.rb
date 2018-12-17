@@ -37,6 +37,7 @@ class FormatOutputTest < Minitest::Test
     assert_equal(80, ::FormatOutput.page_width)
   end
 
+  # Formatting tests imported from the mysh gem.
   def test_some_formatting
     assert_equal("1 4\n2 5\n3  ",
                  [1,2,3,4,5].format_output_columns(5))
