@@ -24,7 +24,7 @@ class Array
 
     builder = FormatOutput::BulletPointBuilder.new(page_width)
 
-    each {|pair| builder.add(*pair.format_output_prepare_bullet_data)}
+    each {|pair| builder.add(*pair.format_output_prepare_bullet_detail)}
 
     builder.render
   end
@@ -35,7 +35,7 @@ class Array
   alias :format_output_bullet_detail :format_output_raw_columns
 
   # Get data ready for being in a bullet point.
-  def format_output_prepare_bullet_data
+  def format_output_prepare_bullet_detail
     if length < 2
       ["*", self[0]]
     else
@@ -55,7 +55,7 @@ class Object
   end
 
   # Get data ready for being in a bullet point.
-  def prepare_bullet_data
+  def format_output_prepare_bullet_detail
     ["*", self]
   end
 
