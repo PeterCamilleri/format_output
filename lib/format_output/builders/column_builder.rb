@@ -6,7 +6,7 @@ module FormatOutput
   # A class to build columns for display.
   class ColumnBuilder
 
-    #Prepare a blank page.
+    # Prepare a blank page.
     def initialize(page_width = ::FormatOutput.page_width)
       @page_width = page_width
       @page_data = []

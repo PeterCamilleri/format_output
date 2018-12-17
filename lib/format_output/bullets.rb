@@ -86,8 +86,10 @@ class String
 
     #Grab "words" of input, splitting off lines as needed.
     loop do
-      empty = (build = build.split_if_over(input.next, max_width, buffer)
-                            .split_if_huge(max_width, buffer)).empty?
+      build = build.split_if_over(input.next, max_width, buffer)
+                   .split_if_huge(max_width, buffer)
+
+      empty = build.empty?
     end
 
     unless empty
@@ -105,8 +107,8 @@ class String
     word_len = word.length
 
     if (length + word_len) >= max_width && word_len < max_width
-      buffer << self  #Line done, add to buffer.
-      word.lstrip     #Start of a new line, remove the leading space.
+      buffer << self    # Line done, add to buffer.
+      word.lstrip       # Start of a new line, remove the leading space.
     else
       self + word
     end

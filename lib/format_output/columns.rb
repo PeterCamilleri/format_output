@@ -35,4 +35,3 @@ class Array
   end
 
 end
-
