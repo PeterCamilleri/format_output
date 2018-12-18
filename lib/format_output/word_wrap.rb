@@ -33,14 +33,14 @@ end
 class String
 
   # Print out the string with word wrap.
-  def puts_format_output_word_wrap(page_width = nil)
-    puts format_output_word_wrap(page_width)
+  def puts_format_output_word_wrap(page_width = nil, left_margin = nil)
+    puts format_output_word_wrap(page_width, left_margin)
   end
 
   # Convert the string to a string with bullet points.
   # Returns: A string.
-  def format_output_word_wrap(page_width = nil)
-    format_output_raw_word_wrap(page_width).join("\n")
+  def format_output_word_wrap(page_width = nil, left_margin = nil)
+    format_output_raw_word_wrap(page_width, left_margin).join("\n")
   end
 
   # Convert the string to an array of strings with word wrap.

@@ -94,6 +94,10 @@ class FormatOutputTest < Minitest::Test
 
     result = "This is a very very very long and\nverbose massage from the Swedish Prime\nMinister"
     assert_equal(result, text.format_output_word_wrap(40))
+
+    result = "     This is a very very very long and\n     verbose massage from the Swedish Prime\n     Minister"
+    assert_equal(result, text.format_output_word_wrap(40, 5))
+
   end
 
 end
