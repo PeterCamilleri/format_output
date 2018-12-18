@@ -48,7 +48,7 @@ module FormatOutput
       result = []
 
       item.format_output_bullet_detail(@page_width - @key_length - 1).each do |desc_line|
-        result << key.ljust(@key_length) + desc_line
+        result << FormatOutput.pad + key.ljust(@key_length) + desc_line
         key = ""
       end
 

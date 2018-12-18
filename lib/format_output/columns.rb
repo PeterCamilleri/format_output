@@ -5,21 +5,21 @@
 class Array
 
   # Print out the array with efficient columns.
-  def puts_format_output_columns(page_width = ::FormatOutput.width)
-    puts format_output_columns(page_width)
+  def puts_format_output_columns(width = ::FormatOutput.width)
+    puts format_output_columns(width)
   end
 
   # Convert the array to a string with efficient columns.
   # Returns: A string.
   # Endemic Code Smells reek:FeatureEnvy -- false positive.
-  def format_output_columns(page_width = ::FormatOutput.width)
-    format_output_raw_columns(page_width).join("\n")
+  def format_output_columns(width = ::FormatOutput.width)
+    format_output_raw_columns(width).join("\n")
   end
 
   # Convert the array to strings with efficient columns.
   # Returns: An array of strings.
-  def format_output_raw_columns(page_width = ::FormatOutput.width)
-    builder = FormatOutput::ColumnBuilder.new(page_width)
+  def format_output_raw_columns(width = ::FormatOutput.width)
+    builder = FormatOutput::ColumnBuilder.new(width)
 
     each {|item| builder.add(item)}
 

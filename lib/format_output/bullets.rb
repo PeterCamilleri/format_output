@@ -5,19 +5,21 @@
 class Array
 
   # Print out the array as bullet points.
-  def puts_format_output_bullets(page_width = ::FormatOutput.width)
+  def puts_format_output_bullets(page_width = nil)
     puts format_output_bullets(page_width)
   end
 
   # Convert the array to a string with bullet points.
   # Returns: A string.
-  def format_output_bullets(page_width = ::FormatOutput.width)
+  def format_output_bullets(page_width = nil)
     format_output_raw_bullets(page_width).join("\n")
   end
 
   # Convert the array to strings with bullet points.
   # Returns: An array of strings.
-  def format_output_raw_bullets(page_width = ::FormatOutput.width)
+  def format_output_raw_bullets(page_width = nil)
+    page_width = ::FormatOutput.width(page_width)
+
     return [""] if empty?
 
     builder = FormatOutput::BulletPointBuilder.new(page_width)
@@ -75,7 +77,8 @@ class String
 
   # Create a bullet point description from this string.
   # Returns: An array of strings.
-  def format_output_bullet_detail(max_width = ::FormatOutput.width)
+  def format_output_bullet_detail(max_width = nil)
+    max_width = ::FormatOutput.width(max_width)
     do_format_output_bullet_detail(split(' ').each, max_width)
   end
 

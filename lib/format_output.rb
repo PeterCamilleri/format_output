@@ -26,8 +26,8 @@ module FormatOutput
     attr_accessor :min_width
 
     # Get the default working page width.
-    def width
-      @page_width - (@left_margin + @right_margin)
+    def width(working_width = nil)
+      working_width || (@page_width - (@left_margin + @right_margin))
     end
 
     # Set the default page width.
@@ -42,8 +42,8 @@ module FormatOutput
     end
 
     # The left margin pad string.
-    def pad
-      " " * @left_margin
+    def pad(left_margin = nil)
+      " " * (left_margin || @left_margin)
     end
 
   end

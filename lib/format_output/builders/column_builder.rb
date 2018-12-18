@@ -47,7 +47,7 @@ module FormatOutput
     # Render a single row of data.
     # Returns: A string.
     def render_row(row_index, widths)
-      @page_data.each_with_index.map do |column, index|
+      FormatOutput.pad + @page_data.each_with_index.map do |column, index|
         column[row_index].to_s.ljust(widths[index])
       end.join(" ")
     end

@@ -44,6 +44,11 @@ class FormatOutputTest < Minitest::Test
     assert_equal("     ", ::FormatOutput.pad)
     assert_equal(5, ::FormatOutput.left_margin)
     assert_equal(75, ::FormatOutput.width)
+
+    assert_equal("     1 4\n     2 5\n     3  ",
+                 [1,2,3,4,5].format_output_columns(5))
+
+  ensure
     FormatOutput.left_margin = 0
   end
 
