@@ -41,6 +41,9 @@ module FormatOutput
     end
 
     # Render one bullet point.
+    # Returns: An array of strings, formatted as:     bullet  details
+    #                                                         more details
+    #                                                         more etc
     def render_bullet(key, item)
       result = []
 
