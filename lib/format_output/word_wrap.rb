@@ -34,7 +34,7 @@ class String
 
   # Print out the string with word wrap.
   def puts_format_output_word_wrap(page_width = ::FormatOutput.page_width)
-    puts format_output_word_wrap(page_width).join("\n")
+    puts format_output_word_wrap(page_width)
   end
 
   # Convert the string to a string with bullet points.
