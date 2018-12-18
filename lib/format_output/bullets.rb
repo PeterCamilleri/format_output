@@ -84,10 +84,11 @@ class String
   def do_format_output_bullet_detail(input, max_width)
     buffer, build, empty = [], "", false
 
-    #Grab "words" of input, splitting off lines as needed.
+    # Grab "words" of input, splitting off lines as needed.
+    # Note: This loop exits when input.next runs out of data.
     loop do
-      build = build.split_if_over(input.next, max_width, buffer)
-                   .split_if_huge(max_width, buffer)
+      build = build.format_output_split_if_over(input.next, max_width, buffer)
+                   .format_output_split_if_huge(max_width, buffer)
 
       empty = build.empty?
     end
@@ -100,8 +101,9 @@ class String
   end
 
   # Split if adding a word goes over a little.
+  # Note: self is the build string from do_format_output_bullet_detail.
   # Returns: A string.
-  def split_if_over(word, max_width, buffer)
+  def format_output_split_if_over(word, max_width, buffer)
     word.prepend(" ") unless empty? #Add a space except for the first word.
 
     word_len = word.length
@@ -115,8 +117,9 @@ class String
   end
 
   # Split up a overlong blob of text.
+  # Note: self is the result string from format_output_split_if_over.
   # Returns: A string.
-  def split_if_huge(max_width, buffer)
+  def format_output_split_if_huge(max_width, buffer)
 
     # Slice away any excess text into lines in the buffer.
     while length >= max_width
