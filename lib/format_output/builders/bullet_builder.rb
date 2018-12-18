@@ -7,8 +7,8 @@ module FormatOutput
   class BulletPointBuilder
 
     # Prepare a blank slate.
-    def initialize(page_width = ::FormatOutput.width)
-      @page_width  = page_width
+    def initialize(page_width)
+      @page_width  = ::FormatOutput.width(page_width)
       @bullet_data = []
       @key_length  = nil
     end

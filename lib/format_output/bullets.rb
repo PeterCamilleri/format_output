@@ -18,8 +18,6 @@ class Array
   # Convert the array to strings with bullet points.
   # Returns: An array of strings.
   def format_output_raw_bullets(page_width = nil)
-    page_width = ::FormatOutput.width(page_width)
-
     return [""] if empty?
 
     builder = FormatOutput::BulletPointBuilder.new(page_width)
