@@ -4,19 +4,19 @@
 class Array
 
   # Print out the array with word wrap.
-  def puts_format_output_word_wrap(page_width = ::FormatOutput.width)
+  def puts_format_output_word_wrap(page_width = nil)
     puts format_output_word_wrap(page_width).join("\n")
   end
 
   # Convert the array to a string with bullet points.
   # Returns: A string.
-  def format_output_word_wrap(page_width = ::FormatOutput.width)
+  def format_output_word_wrap(page_width = nil)
     format_output_raw_word_wrap(page_width).join("\n")
   end
 
   # Returns: An array of strings.
   # This method is a duplicate of a bullet point method with a new name.
-  def format_output_raw_word_wrap(page_width = ::FormatOutput.width)
+  def format_output_raw_word_wrap(page_width = nil)
     result = []
 
     each do |item|
@@ -33,13 +33,13 @@ end
 class String
 
   # Print out the string with word wrap.
-  def puts_format_output_word_wrap(page_width = ::FormatOutput.width)
+  def puts_format_output_word_wrap(page_width = nil)
     puts format_output_word_wrap(page_width)
   end
 
   # Convert the string to a string with bullet points.
   # Returns: A string.
-  def format_output_word_wrap(page_width = ::FormatOutput.width)
+  def format_output_word_wrap(page_width = nil)
     format_output_raw_word_wrap(page_width).join("\n")
   end
 

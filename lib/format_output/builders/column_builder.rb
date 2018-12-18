@@ -7,9 +7,10 @@ module FormatOutput
   class ColumnBuilder
 
     # Prepare a blank page.
-    def initialize(page_width = nil)
+    def initialize(page_width)
       @page_width  = ::FormatOutput.width(page_width)
-      @page_data = []
+      @pad         = ::FormatOutput.pad
+      @page_data   = []
     end
 
     # Add an item to this page.
@@ -47,7 +48,7 @@ module FormatOutput
     # Render a single row of data.
     # Returns: A string.
     def render_row(row_index, widths)
-      FormatOutput.pad + @page_data.each_with_index.map do |column, index|
+      @pad + @page_data.each_with_index.map do |column, index|
         column[row_index].to_s.ljust(widths[index])
       end.join(" ")
     end

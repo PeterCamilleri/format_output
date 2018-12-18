@@ -86,6 +86,14 @@ class FormatOutputTest < Minitest::Test
        "pie       3.141592653589793"
 
     assert_equal(result, data.format_output_bullets)
+
+    text = "This is a very very very long and verbose massage from the Swedish Prime Minister"
+
+    result = "This is a very very very long and verbose massage from the Swedish Prime\nMinister"
+    assert_equal(result, text.format_output_word_wrap)
+
+    result = "This is a very very very long and\nverbose massage from the Swedish Prime\nMinister"
+    assert_equal(result, text.format_output_word_wrap(40))
   end
 
 end

@@ -9,6 +9,7 @@ module FormatOutput
     # Prepare a blank slate.
     def initialize(page_width)
       @page_width  = ::FormatOutput.width(page_width)
+      @pad         = ::FormatOutput.pad
       @bullet_data = []
       @key_length  = nil
     end
@@ -48,7 +49,7 @@ module FormatOutput
       result = []
 
       item.format_output_bullet_detail(@page_width - @key_length - 1).each do |desc_line|
-        result << FormatOutput.pad + key.ljust(@key_length) + desc_line
+        result << @pad + key.ljust(@key_length) + desc_line
         key = ""
       end
 
