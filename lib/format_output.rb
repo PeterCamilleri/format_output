@@ -2,6 +2,7 @@
 
 require_relative "format_output/columns"
 require_relative "format_output/bullets"
+require_relative "format_output/word_wrap"
 
 require_relative "format_output/builders/bullet_builder"
 require_relative "format_output/builders/column_builder"

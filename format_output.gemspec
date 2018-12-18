@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
   spec.summary       = %q{Formatted output to the console or strings.}
-  spec.description   = %q{Formatted bullet points or columns to the console or strings.}
+  spec.description   = %q{Formatted bullet points, columns, or word wrap to the console or strings.}
   spec.homepage      = "https://github.com/PeterCamilleri/format_output"
   spec.license       = "MIT"
 

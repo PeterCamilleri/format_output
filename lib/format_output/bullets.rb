@@ -9,7 +9,7 @@ class Array
     puts format_output_bullets(page_width)
   end
 
-  # Convert the array to strings with bullet points.
+  # Convert the array to a string with bullet points.
   # Returns: A string.
   def format_output_bullets(page_width = ::FormatOutput.page_width)
     format_output_raw_bullets(page_width).join("\n")
@@ -75,7 +75,7 @@ class String
 
   # Create a bullet point description from this string.
   # Returns: An array of strings.
-  def format_output_bullet_detail(max_width)
+  def format_output_bullet_detail(max_width = ::FormatOutput.page_width)
     do_format_output_bullet_detail(split(' ').each, max_width)
   end
 
