@@ -97,7 +97,23 @@ class FormatOutputTest < Minitest::Test
 
     result = "     This is a very very very long and\n     verbose massage from the Swedish Prime\n     Minister"
     assert_equal(result, text.format_output_word_wrap(40, 5))
+  end
 
+  def test_a_wrapped_array
+    ary = ["There are many many stars in the heavens. Lots really. Like billions and billions",
+           "There are many many fishies in the sea.  Lots really. Like billions and billions",
+           "There are many many birds in the sky.  Lots really. Like billions and billions"]
+
+    result = "     There are many many stars in the\n" +
+             "     heavens. Lots really. Like billions and\n" +
+             "     billions\n" +
+             "\n" +
+             "     There are many many fishies in the sea.\n" +
+             "     Lots really. Like billions and billions\n" +
+             "\n" +
+             "     There are many many birds in the sky.\n" +
+             "     Lots really. Like billions and billions\n"
+    assert_equal(result, ary.format_output_word_wrap(40, 5))
   end
 
 end
