@@ -5,22 +5,22 @@
 class Array
 
   # Print out the array as bullet points.
-  def puts_format_output_bullets(page_width = nil, left_margin = nil)
-    puts format_output_bullets(page_width, left_margin)
+  def puts_format_output_bullets(max_width = nil, left_margin = nil)
+    puts format_output_bullets(max_width, left_margin)
   end
 
   # Convert the array to a string with bullet points.
   # Returns: A string.
-  def format_output_bullets(page_width = nil, left_margin = nil)
-    format_output_raw_bullets(page_width, left_margin).join("\n")
+  def format_output_bullets(max_width = nil, left_margin = nil)
+    format_output_raw_bullets(max_width, left_margin).join("\n")
   end
 
   # Convert the array to strings with bullet points.
   # Returns: An array of strings.
-  def format_output_raw_bullets(page_width = nil, left_margin = nil)
+  def format_output_raw_bullets(max_width = nil, left_margin = nil)
     return [""] if empty?
 
-    builder = FormatOutput::BulletPointBuilder.new(page_width, left_margin)
+    builder = FormatOutput::BulletPointBuilder.new(max_width, left_margin)
 
     each {|pair| builder.add(*pair.format_output_prepare_bullet_detail)}
 

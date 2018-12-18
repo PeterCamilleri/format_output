@@ -7,8 +7,8 @@ module FormatOutput
   class ColumnBuilder
 
     # Prepare a blank page.
-    def initialize(page_width, left_margin)
-      @page_width  = ::FormatOutput.width(page_width)
+    def initialize(max_width, left_margin)
+      @max_width   = ::FormatOutput.width(max_width)
       @pad         = ::FormatOutput.pad(left_margin)
       @page_data   = []
     end
@@ -17,7 +17,7 @@ module FormatOutput
     # Returns: The number of items that did not fit in the page.
     def add(raw_item)
       item = raw_item.to_s
-      fail "Item too large to fit." unless item.length < @page_width
+      fail "Item too large to fit." unless item.length < @max_width
 
       if (column = find_next_column)
         @page_data[column] << item
@@ -55,7 +55,7 @@ module FormatOutput
 
     # Make sure the page fits within its boundaries.
     def adjust_configuration
-      while total_width >= @page_width
+      while total_width >= @max_width
         add_a_row
       end
     end
@@ -87,7 +87,7 @@ module FormatOutput
 
     # Does the data fit on the page?
     def fits?
-      total_width < @page_width
+      total_width < @max_width
     end
 
     # How many rows are currently in this page?
