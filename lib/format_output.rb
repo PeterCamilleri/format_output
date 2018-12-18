@@ -41,6 +41,11 @@ module FormatOutput
       @page_width = new_width
     end
 
+    # The left margin pad string.
+    def pad
+      " " * @left_margin
+    end
+
   end
 
 end

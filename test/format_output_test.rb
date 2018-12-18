@@ -37,6 +37,16 @@ class FormatOutputTest < Minitest::Test
     assert_equal(80, ::FormatOutput.page_width)
   end
 
+  def test_for_a_left_margin
+    assert_equal(80, ::FormatOutput.width)
+    assert_equal("", ::FormatOutput.pad)
+    FormatOutput.left_margin = 5
+    assert_equal("     ", ::FormatOutput.pad)
+    assert_equal(5, ::FormatOutput.left_margin)
+    assert_equal(75, ::FormatOutput.width)
+    FormatOutput.left_margin = 0
+  end
+
   # Formatting tests imported from the mysh gem.
   def test_some_formatting
     assert_equal("1 4\n2 5\n3  ",
