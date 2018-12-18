@@ -7,7 +7,7 @@ module FormatOutput
   class ColumnBuilder
 
     # Prepare a blank page.
-    def initialize(page_width = ::FormatOutput.page_width)
+    def initialize(page_width = ::FormatOutput.width)
       @page_width = page_width
       @page_data = []
     end
