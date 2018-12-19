@@ -28,10 +28,8 @@ class FormatOutputTest < Minitest::Test
 
   def test_that_it_keeps_a_max_width
     assert_equal(80, ::FormatOutput.width)
-    ::FormatOutput.width = 40
+    ::FormatOutput.width = '40'
     assert_equal(40, ::FormatOutput.width)
-#    assert_raises {::FormatOutput.width = 2}
-#    assert_raises {::FormatOutput.width = 'apple'}
     assert_equal(40, ::FormatOutput.width)
     ::FormatOutput.width = 80
     assert_equal(80, ::FormatOutput.width)

@@ -16,18 +16,17 @@ module FormatOutput
   @width = 80
   @left  = 0
   @right = 0
-  @min   = 20
 
   class << self
 
-    attr_writer   :width
-    attr_writer   :left
-    attr_writer   :right
-    attr_accessor :min
-
     # Get the full page width.
     def width(options = {})
-      options[:width] || @width
+      (options[:width] || @width).to_i
+    end
+
+    # Set the full page width.
+    def width=(value)
+      @width = value.to_i
     end
 
     # Get the working page width.
@@ -35,9 +34,20 @@ module FormatOutput
       width(options) - (left(options) + right(options))
     end
 
+    # Set the working page width.
+    # Note always set after left and right are set.
+    def body=(value)
+      @width = value.to_i + @left + @right
+    end
+
     # Get the left margin
     def left(options = {})
       (options[:left] || @left).to_i
+    end
+
+    # Set the left margin
+    def left=(value)
+      @left = value.to_i
     end
 
     # Get the left margin
@@ -45,14 +55,14 @@ module FormatOutput
       (options[:right] || @right).to_i
     end
 
+    # Set the right margin
+    def right=(value)
+      @right = value.to_i
+    end
+
     # The left margin pad string.
     def pad(options = {})
       " " * left(options)
-    end
-
-    # Are these options valid?
-    def validate(options = {})
-      fail "Invalid format settings." if body(options) < @min
     end
 
   end
