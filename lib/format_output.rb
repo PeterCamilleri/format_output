@@ -37,12 +37,12 @@ module FormatOutput
 
     # Get the left margin
     def left(options = {})
-      options[:left] || @left
+      (options[:left] || @left).to_i
     end
 
     # Get the left margin
     def right(options = {})
-      options[:right] || @right
+      (options[:right] || @right).to_i
     end
 
     # The left margin pad string.

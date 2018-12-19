@@ -7,9 +7,9 @@ module FormatOutput
   class BulletPointBuilder
 
     # Prepare a blank slate.
-    def initialize(max_width, left_margin)
-      @max_width   = ::FormatOutput.width(max_width)
-      @pad         = ::FormatOutput.pad(left_margin)
+    def initialize(options)
+      @body        = ::FormatOutput.width(options)
+      @pad         = ::FormatOutput.pad(options)
       @bullet_data = []
       @key_length  = nil
     end
@@ -48,7 +48,7 @@ module FormatOutput
     def render_bullet(key, item)
       result = []
 
-      item.format_output_bullet_detail(@max_width - @key_length - 1, 0).each do |desc_line|
+      item.format_output_bullet_detail(width: @body - @key_length - 1, left: 0).each do |desc_line|
         result << @pad + key.ljust(@key_length) + desc_line
         key = ""
       end
