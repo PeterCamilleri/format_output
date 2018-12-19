@@ -13,37 +13,46 @@ require_relative "format_output/version"
 module FormatOutput
 
   # Some property variables.
-  @max_width    = 80
-  @left_margin  = 0
-  @right_margin = 0
-  @min_width    = 20
+  @width = 80
+  @left  = 0
+  @right = 0
+  @min   = 20
 
   class << self
 
-    attr_reader   :max_width
-    attr_accessor :left_margin
-    attr_accessor :right_margin
-    attr_accessor :min_width
+    attr_writer   :width
+    attr_writer   :left
+    attr_writer   :right
+    attr_accessor :min
 
-    # Get the default working page width.
-    def width(working_width = nil)
-      working_width || (@max_width - (@left_margin + @right_margin))
+    # Get the full page width.
+    def width(options = {})
+      options[:width] || @width
     end
 
-    # Set the default page width.
-    def max_width=(value)
-      new_width = value.to_i
+    # Get the working page width.
+    def body(options = {})
+      width(options) - (left(options) + right(options))
+    end
 
-      if (new_width - @min_width) < (@left_margin + @right_margin)
-        fail "Invalid page width #{new_width}."
-      end
+    # Get the left margin
+    def left(options = {})
+      options[:left] || @left
+    end
 
-      @max_width = new_width
+    # Get the left margin
+    def right(options = {})
+      options[:right] || @right
     end
 
     # The left margin pad string.
-    def pad(left_margin = nil)
-      " " * (left_margin || @left_margin)
+    def pad(options = {})
+      " " * left(options)
+    end
+
+    # Are these options valid?
+    def validate(options = {})
+      fail "Invalid format settings." if body(options) < @min
     end
 
   end

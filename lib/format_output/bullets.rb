@@ -5,22 +5,22 @@
 class Array
 
   # Print out the array as bullet points.
-  def puts_format_output_bullets(max_width = nil, left_margin = nil)
-    puts format_output_bullets(max_width, left_margin)
+  def puts_format_output_bullets(options = {})
+    puts format_output_bullets(options)
   end
 
   # Convert the array to a string with bullet points.
   # Returns: A string.
-  def format_output_bullets(max_width = nil, left_margin = nil)
-    format_output_raw_bullets(max_width, left_margin).join("\n")
+  def format_output_bullets(options = {})
+    format_output_raw_bullets(options).join("\n")
   end
 
   # Convert the array to strings with bullet points.
   # Returns: An array of strings.
-  def format_output_raw_bullets(max_width = nil, left_margin = nil)
+  def format_output_raw_bullets(options = {})
     return [""] if empty?
 
-    builder = FormatOutput::BulletPointBuilder.new(max_width, left_margin)
+    builder = FormatOutput::BulletPointBuilder.new(options)
 
     each {|pair| builder.add(*pair.format_output_prepare_bullet_detail)}
 
@@ -48,8 +48,8 @@ class Object
 
   # Create a bullet point description from this object.
   # Returns: An array of strings.
-  def format_output_bullet_detail(max_width, left_margin)
-    self.to_s.format_output_bullet_detail(max_width, left_margin)
+  def format_output_bullet_detail(options = {})
+    self.to_s.format_output_bullet_detail(options)
   end
 
   # Get data ready for being in a bullet point.
@@ -64,7 +64,7 @@ class NilClass
 
   # Create a bullet point description from nothing.
   # Returns: An array of nothing.
-  def format_output_bullet_detail(_max_width, _left_margin)
+  def format_output_bullet_detail(_options = nil)
     []
   end
 
@@ -75,22 +75,23 @@ class String
 
   # Create a bullet point description from this string.
   # Returns: An array of strings.
-  def format_output_bullet_detail(max_width = nil, left_margin = nil)
-    max_width = ::FormatOutput.width(max_width)
-    pad       = ::FormatOutput.pad(left_margin)
-    do_format_output_bullet_detail(split(' ').each, max_width, pad)
+  def format_output_bullet_detail(options = {})
+    body = ::FormatOutput.width(options)
+    pad  = ::FormatOutput.pad(options)
+
+    do_format_output_bullet_detail(split(' ').each, body, pad)
   end
 
   # Do the formatting legwork.
   # Returns: An array of strings.
-  def do_format_output_bullet_detail(input, max_width, pad)
+  def do_format_output_bullet_detail(input, body, pad)
     buffer, build, empty = [], "", false
 
     # Grab "words" of input, splitting off lines as needed.
     # Note: This loop exits when input.next runs out of data.
     loop do
-      build = build.format_output_split_if_over(input.next, max_width, buffer, pad)
-                   .format_output_split_if_huge(max_width, buffer, pad)
+      build = build.format_output_split_if_over(buffer, body, pad, input.next)
+                   .format_output_split_if_huge(buffer, body, pad)
 
       empty = build.empty?
     end
@@ -105,12 +106,12 @@ class String
   # Split if adding a word goes over a little.
   # Note: self is the build string from do_format_output_bullet_detail.
   # Returns: A string.
-  def format_output_split_if_over(word, max_width, buffer, pad)
+  def format_output_split_if_over(buffer, body, pad, word)
     word.prepend(" ") unless empty? #Add a space except for the first word.
 
     word_len = word.length
 
-    if (length + word_len) >= max_width && word_len < max_width
+    if (length + word_len) >= body && word_len < body
       buffer << pad + self    # Line done, add to buffer.
       word.lstrip             # Start of a new line, remove the leading space.
     else
@@ -121,11 +122,11 @@ class String
   # Split up a overlong blob of text.
   # Note: self is the result string from format_output_split_if_over.
   # Returns: A string.
-  def format_output_split_if_huge(max_width, buffer, pad)
+  def format_output_split_if_huge(buffer, body, pad)
 
     # Slice away any excess text into lines in the buffer.
-    while length >= max_width
-      buffer << pad + slice!(0, max_width)
+    while length >= body
+      buffer << pad + slice!(0, body)
     end
 
     self
