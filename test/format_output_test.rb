@@ -85,6 +85,18 @@ class FormatOutputTest < Minitest::Test
 
     assert_equal(result, data.format_output_bullets)
 
+    data = [["Name", "Wiley Coyote"],
+            ["Education", "Super Genius"],
+            ["Incident", "Run over by a large truck"],
+            ["Status", "Flattened and accordion like."]
+           ]
+    result = "Name      Wiley Coyote\n" +
+             "Education Super Genius\n" +
+             "Incident  Run over by a large truck\n" +
+             "Status    Flattened and accordion like."
+
+    assert_equal(result, data.format_output_bullets(width: 60))
+
     text = "This is a very very very long and verbose massage from the Swedish Prime Minister"
 
     result = "This is a very very very long and verbose massage from the Swedish Prime\nMinister"
@@ -111,6 +123,7 @@ class FormatOutputTest < Minitest::Test
              "\n" +
              "     There are many many birds in the sky.\n" +
              "     Lots really. Like billions and billions\n"
+
     assert_equal(result, ary.format_output_word_wrap(width: 40, left: 5))
   end
 
