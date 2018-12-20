@@ -1,8 +1,8 @@
 # FormatOutput
 
-The format_output gem is used to facilitate the CLI programs by formatting data
-as bullet points, columns, or word wrap to the console, strings, or arrays of
-strings.
+The format_output gem is used to facilitate the creation of CLI programs in
+Ruby by formatting data as bullet points, columns, or word wrap to the console,
+strings, or arrays of strings.
 
 This gem started out life buried deep within the mysh gem where it served as
 the data formatting facility for that program. Such was the usefulness of these
