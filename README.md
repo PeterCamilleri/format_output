@@ -77,11 +77,16 @@ right    |The size of the right margin. White space to the right of the data.| 0
 
 These relationships are illustrated below:
 
-    |<----------- width ------------>|
-    |left |<------ body ------>|right|
-    |     | 1  4  7  10  13  16|     |
-    |     | 2  5  8  11  14  17|     |
-    |     | 3  6  9  12  15  18|     |
+    |<-------------------------- width --------------------------->|
+    |<left  margin>|<------------ body ------------>|<right margin>|
+                     1  4  7  10  13  16  19  22  25
+                     2  5  8  11  14  17  20  23
+                     3  6  9  12  15  18  21  24
+
+      width = 60
+      left  = 14
+      right = 14
+      body  = 32
 
 In many cases however, the programmer will not need to modify these parameters.
 That is the defaults values provided are suitable for most application.
@@ -92,7 +97,7 @@ If the defaults are not suitable, there are two approaches that are available:
 
     FormatOutput.width = 132
 
-2. the parameters can be set for one call only. For example:
+2. The parameters can be set for one call only. For example:
 
     my_array.format_output_columns(left: 5, right: 5)
 
@@ -114,7 +119,7 @@ quite a bit. So these rules should be followed:
 
 * Always set left and right margins before setting the body. Otherwise, the
 body setting will be modified to a value other than the set value.
-* Don't set both the body and the width as only the last will have effect.
+* Don't set both the body and the width or unexpected results may be observed.
 
 ## Contributing
 
