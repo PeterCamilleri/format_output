@@ -86,9 +86,19 @@ These relationships are illustrated below:
 In many cases however, the programmer will not need to modify these parameters.
 That is the defaults values provided are suitable for most application.
 
+If the defaults are not suitable, there are two approaches that are available:
 
-Note: these parameters are connected in that the define the same formatting
-work area. As a result, the following interactions occur:
+1. The global parameters can be changed. For example:
+
+    FormatOutput.width = 132
+
+2. the parameters can be set for one call only. For example:
+
+    my_array.format_output_columns(left: 5, right: 5)
+
+
+Note: The format_output parameters are connected in that they define the same
+formatting work area. As a result, the following interactions occur:
 
     FormatOutput.left            # Gets the left margin
     FormatOutput.left  = value   # Sets the left margin
@@ -102,10 +112,9 @@ work area. As a result, the following interactions occur:
 As can be seen, setting the body and setting the other parameters does interact
 quite a bit. So these rules should be followed:
 
-* Set left and right margins before setting the body.
+* Always set left and right margins before setting the body. Otherwise, the
+body setting will be modified to a value other than the set value.
 * Don't set both the body and the width as only the last will have effect.
-
-
 
 ## Contributing
 
