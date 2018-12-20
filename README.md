@@ -64,7 +64,48 @@ Or install it yourself as:
 
 ## Usage
 
-WIP
+#### Formatting Control Parameters
+
+The formatting of output is controlled by four parameters. These are:
+
+Parameter| Description                                                       | Default
+---------|-------------------------------------------------------------------|-----------
+width    |The overall width of the output "stage".                           | 80
+left     |The size of the left margin. White space to the left of the data.  | 0
+body     |The center of the "stage" where the formatted data resides.        | 80
+right    |The size of the right margin. White space to the right of the data.| 0
+
+These relationships are illustrated below:
+
+    |<----------- width ------------>|
+    |left |<------ body ------>|right|
+    |     | 1  4  7  10  13  16|     |
+    |     | 2  5  8  11  14  17|     |
+    |     | 3  6  9  12  15  18|     |
+
+In many cases however, the programmer will not need to modify these parameters.
+That is the defaults values provided are suitable for most application.
+
+
+Note: these parameters are connected in that the define the same formatting
+work area. As a result, the following interactions occur:
+
+    FormatOutput.left            # Gets the left margin
+    FormatOutput.left  = value   # Sets the left margin
+    FormatOutput.right           # Gets the left margin
+    FormatOutput.right = value   # Sets the left margin
+    FormatOutput.width           # Gets the full width
+    FormatOutput.width = value   # Sets the full width
+    FormatOutput.body            # Gets width - (left + right)
+    FormatOutput.width = value   # Sets width = value + left + right
+
+As can be seen, setting the body and setting the other parameters does interact
+quite a bit. So these rules should be followed:
+
+* Set left and right margins before setting the body.
+* Don't set both the body and the width as only the last will have effect.
+
+
 
 ## Contributing
 
