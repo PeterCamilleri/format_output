@@ -28,7 +28,7 @@ How about making some (bullet) points:
     Name      Wiley Coyote
     Education Super Genius
     Incident  Run over by a large truck
-    Status    Flattened and accordion like.
+    Status    Flattened and accordion like
 
 #### Word Wrap
 
