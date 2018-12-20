@@ -8,7 +8,8 @@ the data formatting facility for that program. Such was the utility of these
 methods that the long task of splitting them away from mysh was started.
 
 Along the way, additional capabilities were added to flesh out range of
-available formatting transformations. These include:
+available formatting transformations. The following  are taken from the
+format_output unit test suite and include:
 
 #### Columns
 
