@@ -154,18 +154,26 @@ screen.
 Column formatting tries to use as few lines of output as it can. For example:
 
 ```ruby
-# Some simple, squared columns
-column_data = Array.new(25) { |index| "sqr(#{index}) = #{index*index}" }
+# Some simple number, squared, and cubed columns
+column_data = Array.new(25) { |i| "#{i}, #{i*i}, #{i*i*i}  " }
+puts "Numbers, squares, and cubes.", ""
 column_data.puts_format_output_columns(width: 72)
 ```
 
 The output is:
 
-    sqr(0) = 0  sqr(5) = 25 sqr(10) = 100 sqr(15) = 225 sqr(20) = 400
-    sqr(1) = 1  sqr(6) = 36 sqr(11) = 121 sqr(16) = 256 sqr(21) = 441
-    sqr(2) = 4  sqr(7) = 49 sqr(12) = 144 sqr(17) = 289 sqr(22) = 484
-    sqr(3) = 9  sqr(8) = 64 sqr(13) = 169 sqr(18) = 324 sqr(23) = 529
-    sqr(4) = 16 sqr(9) = 81 sqr(14) = 196 sqr(19) = 361 sqr(24) = 576
+Numbers, squares, and cubes.
+
+    0, 0, 0      7, 49, 343      14, 196, 2744   21, 441, 9261
+    1, 1, 1      8, 64, 512      15, 225, 3375   22, 484, 10648
+    2, 4, 8      9, 81, 729      16, 256, 4096   23, 529, 12167
+    3, 9, 27     10, 100, 1000   17, 289, 4913   24, 576, 13824
+    4, 16, 64    11, 121, 1331   18, 324, 5832
+    5, 25, 125   12, 144, 1728   19, 361, 6859
+    6, 36, 216   13, 169, 2197   20, 400, 8000
+
+Now this is not meant to be optimal, but to instead show how neat columns are
+created even with items of varying length.
 
 #### Word Wrap
 

@@ -5,6 +5,7 @@
 
 require_relative '..\lib\format_output'
 
-# Some simple, squared columns
-column_data = Array.new(25) { |index| "sqr(#{index}) = #{index*index}" }
+# Some simple number, squared, and cubed columns
+column_data = Array.new(25) { |i| "#{i}, #{i*i}, #{i*i*i}  " }
+puts "Numbers, squares, and cubes.", ""
 column_data.puts_format_output_columns(width: 72)
