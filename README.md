@@ -121,6 +121,41 @@ quite a bit. So these rules should be followed:
 body setting will be modified to a value other than the set value.
 * Don't set both the body and the width or unexpected results may be observed.
 
+When parameters are passed in for individual calls, they take effect at the
+same time so the ordering is not significant. Still, setting body and width
+will have unpredictable results.
+
+#### API Levels
+
+Each of the three types of formatting has three levels of support. These are
+summarized as follows:
+
+Columns                   | Word Wrap                  | Bullet Points            | Returns
+--------------------------|----------------------------|--------------------------|----------------
+puts_format_output_columns|puts_format_output_word_wrap|puts_format_output_bullets| nil
+format_output_columns     |format_output_word_wrap     |format_output_bullets     | a string
+format_output_raw_columns |format_output_raw_word_wrap |format_output_raw_bullets | [strings]
+
+The puts_etc methods return nil because they directly print the results of the
+formatting using the puts method. The intermediate methods return a string,
+replete with any needed new line characters. Finally the "raw" methods return
+an array of strings in place of said new line sequences.
+
+Regardless of how output of the results is achieved, the formatting done is the
+same for all three levels. The next sections focus on that formatting.
+
+#### Columns
+
+WIP
+
+#### Word Wrap
+
+WIP
+
+#### Bullet Points
+
+WIP
+
 ## Contributing
 
 1. Fork it
