@@ -16,3 +16,21 @@ column_data.puts_format_output_columns(width: 72)
 long_text = "Wherefore rejoice? What conquest brings he home? What tributaries follow him to Rome, to grace in captive bonds his chariot-wheels? You blocks, you stones, you worse than senseless things!"
 puts "", "", "Word wrapping the Great Bard!", ""
 long_text.puts_format_output_word_wrap(width: 72)
+
+# And now to dodge a bullet (point) or twelve!
+
+demo = [
+         [],
+         ["zero", []],
+         ["zero", nil],
+         ["zero", ""],
+         ["one with a (default) bullet."],
+         ["two", 2],
+         ["three", 3, "more than two", "more than one", "more than zero"],
+         ["four", (1..100).to_a],
+         ['five', "I can see for miles and miles and more miles and yet more miles and a lot of miles and damn more miles"],
+       ]
+
+puts "", "", "And now some Bullet Points!", ""
+
+demo.puts_format_output_bullets(width: 72)

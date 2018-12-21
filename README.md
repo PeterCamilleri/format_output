@@ -12,7 +12,7 @@ Along the way, additional capabilities were added to flesh out range of
 available formatting transformations. The following  are taken from the
 format_output unit test suite and include:
 
-#### Columns
+### Columns
 
 Neat, efficient columns of data are nice:
 
@@ -22,7 +22,7 @@ Neat, efficient columns of data are nice:
     3 8 13 18 23 28 33 38 43 48 53 58 63 68 73 78 83 88 93 98
     4 9 14 19 24 29 34 39 44 49 54 59 64 69 74 79 84 89 94 99
 
-#### Bullet Points
+### Bullet Points
 
 How about making some (bullet) points:
 
@@ -31,7 +31,7 @@ How about making some (bullet) points:
     Incident  Run over by a large truck
     Status    Flattened and accordion like
 
-#### Word Wrap
+### Word Wrap
 
 Well long text can be hard to (word) wrap your head around:
 
@@ -64,7 +64,7 @@ Or install it yourself as:
 
 ## Usage
 
-#### Formatting Control Parameters
+### Formatting Control Parameters
 
 The formatting of output is controlled by four parameters. These are:
 
@@ -125,7 +125,7 @@ When parameters are passed in for individual calls, they take effect at the
 same time so the ordering is not significant. Still, setting body and width
 will have unpredictable results.
 
-#### API Levels
+### API Levels
 
 Each of the three types of formatting has three levels of support. These are
 summarized as follows:
@@ -144,7 +144,7 @@ an array of strings in place of said new line sequences.
 Regardless of how output of the results is achieved, the formatting done is the
 same for all three levels. The next sections focus on that formatting.
 
-#### Columns
+### Columns
 
 The column format is used to display data in neat columns. Yes sure, you can
 just do a puts on an array of data and it will blast it to the console, one
@@ -175,7 +175,7 @@ The output is:
 Now this is not meant to be optimal, but to instead show how neat columns are
 created even with items of varying length.
 
-#### Word Wrap
+### Word Wrap
 
 The word wrap format is used to take very long lines of text and convert it
 into a number of shorter lines. The trick is to avoid splitting words and
@@ -200,9 +200,131 @@ Now, if the input is an array of really long strings, the word wrapper will
 convert each of those lines into a neatly word wrapped paragraph with a blank
 line between them.
 
-#### Bullet Points
+### Bullet Points
 
-WIP
+The bullet point formatter is used to create an output consisting of one or
+more bullet points. So how is a bullet point defined? There are two essential
+components, illustrated here:
+
+    tag1 detail1
+    tag2 detail2
+    tag3 etc etc etc
+
+So what is the input? An array of bullet point data of course! That is an array
+of arrays. The following array describes the sample bullet point above:
+
+```ruby
+datum = [["tag1", "detail1"],["tag2", "detail2"],["tag3", "etc etc etc"]]
+datum.puts_format_output_bullets
+```
+
+Now, this array contained in the outer array describes the actual bullet points
+that are created. This inner array may contain zero or more elelemts.
+
+#### Zero Elements and Empty Bullets
+
+When an empty array is used, the bullet formatter skips that entry. This can be
+useful when gathering data for a report and for one item no data is found.
+There are three ways to create an empty bullet point:
+
+```ruby
+[]
+["zero", []]
+["zero", nil]
+```
+
+Note that the following, is not fully empty
+
+```ruby
+["zero", ""]
+```
+
+Yields a bullet point with a bullet of "zero" and no detail text.
+
+#### One Element
+
+When an array with one element is used, that element becomes the detail and the
+default bullet ("*") is used:
+
+```ruby
+["one with a (default) bullet."]
+```
+
+produces:
+
+    *     one with a (default) bullet.
+
+#### Two Elements
+
+When an array with two elements is used, the first is the bullet and the second
+is the detail. This is by far the most common:
+
+```ruby
+["two", 2],
+```
+
+produces:
+
+    two   2
+
+
+#### Three or more Elements
+
+When an array with three or more elements is used, the first is the bullet and
+the second is the detail. The rest of the elements are additional details for
+this bullet point. Like this:
+
+````ruby
+["three", 3, "more than two", "more than one", "more than zero"],
+```
+
+produces:
+
+    three 3
+          more than two
+          more than one
+          more than zero
+
+#### The Details
+
+Now we can turn our attention to the actual details and to a lesser extent, the
+tags. These can be:
+
+1. A String
+2. An object that responds favorably to the to_s method.
+
+In addition, the details may be an Array.
+
+So when the details are a string that string is used as the details. And yes,
+if the string is too long to fit, it gets word wrapped! Like this:
+
+```ruby
+['five', "I can see for miles and miles and more miles and yet more miles and a lot of miles and damn more miles"]
+```
+
+produces:
+
+    five  I can see for miles and miles and more miles and yet more miles
+          and a lot of miles and damn more miles
+
+Note, this courtesy does not extend to the bullet tags. They must exhibit a
+sensible level of brevity!
+
+Further, when the details are contained in there own little array, they are
+displayed in columns if they don't fit in one line. Look here:
+
+```ruby
+["four", (1..100).to_a]
+```
+
+produces:
+
+    four  1 6  11 16 21 26 31 36 41 46 51 56 61 66 71 76 81 86 91 96
+          2 7  12 17 22 27 32 37 42 47 52 57 62 67 72 77 82 87 92 97
+          3 8  13 18 23 28 33 38 43 48 53 58 63 68 73 78 83 88 93 98
+          4 9  14 19 24 29 34 39 44 49 54 59 64 69 74 79 84 89 94 99
+          5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100
+
 
 ## Contributing
 
