@@ -162,7 +162,7 @@ column_data.puts_format_output_columns(width: 72)
 
 The output is:
 
-Numbers, squares, and cubes.
+    Numbers, squares, and cubes.
 
     0, 0, 0      7, 49, 343      14, 196, 2744   21, 441, 9261
     1, 1, 1      8, 64, 512      15, 225, 3375   22, 484, 10648
