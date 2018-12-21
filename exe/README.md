@@ -1,6 +1,6 @@
 # format_output_demo
 
-The formst_output gem comes with the format_output_demo program. The source
+The format_output gem comes with the format_output_demo program. The source
 code for that program is in this folder. This file shows the output of that
 program:
 
