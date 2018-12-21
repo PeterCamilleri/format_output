@@ -177,7 +177,9 @@ created even with items of varying length.
 
 #### Word Wrap
 
-WIP
+The word wrap format is used to take very long lines of text and convert it
+into a number of shorter lines. The trick is to avoid splitting words and
+making the text hard to read.
 
 ```ruby
 # Maybe (word) wrap your head around a little Shakespear?
@@ -194,6 +196,9 @@ The output is:
     follow him to Rome, to grace in captive bonds his chariot-wheels? You
     blocks, you stones, you worse than senseless things!
 
+Now, if the input is an array of really long strings, the word wrapper will
+convert each of those lines into a neatly word wrapped paragraph with a blank
+line between them.
 
 #### Bullet Points
 
