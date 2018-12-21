@@ -274,7 +274,7 @@ When an array with three or more elements is used, the first is the bullet and
 the second is the detail. The rest of the elements are additional details for
 this bullet point. Like this:
 
-````ruby
+```ruby
 ["three", 3, "more than two", "more than one", "more than zero"],
 ```
 
