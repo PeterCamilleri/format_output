@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+# A demo of the format_output gem.
+#
+
+require_relative '..\lib\format_output'
+
+# Some simple, squared columns
+column_data = Array.new(25) { |index| "sqr(#{index}) = #{index*index}" }
+column_data.puts_format_output_columns(width: 72)
