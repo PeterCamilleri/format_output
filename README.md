@@ -179,6 +179,22 @@ created even with items of varying length.
 
 WIP
 
+```ruby
+# Maybe (word) wrap your head around a little Shakespear?
+long_text = "Wherefore rejoice? What conquest brings he home? What tributaries follow him to Rome, to grace in captive bonds his chariot-wheels? You blocks, you stones, you worse than senseless things!"
+puts "", "", "Word wrapping the Great Bard!", ""
+long_text.puts_format_output_word_wrap(width: 72)
+```
+
+The output is:
+
+    Word wrapping the Great Bard!
+
+    Wherefore rejoice? What conquest brings he home? What tributaries
+    follow him to Rome, to grace in captive bonds his chariot-wheels? You
+    blocks, you stones, you worse than senseless things!
+
+
 #### Bullet Points
 
 WIP

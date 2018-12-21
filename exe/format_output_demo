@@ -5,7 +5,14 @@
 
 require_relative '..\lib\format_output'
 
+puts "A simple demo of the format_output gem in action."
+
 # Some simple number, squared, and cubed columns
 column_data = Array.new(25) { |i| "#{i}, #{i*i}, #{i*i*i}  " }
-puts "Numbers, squares, and cubes.", ""
+puts "", "", "Numbers, squares, and cubes.", ""
 column_data.puts_format_output_columns(width: 72)
+
+# Maybe (word) wrap your head around a little Shakespear?
+long_text = "Wherefore rejoice? What conquest brings he home? What tributaries follow him to Rome, to grace in captive bonds his chariot-wheels? You blocks, you stones, you worse than senseless things!"
+puts "", "", "Word wrapping the Great Bard!", ""
+long_text.puts_format_output_word_wrap(width: 72)
