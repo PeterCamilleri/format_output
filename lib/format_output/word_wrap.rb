@@ -8,14 +8,14 @@ class Array
     puts format_output_word_wrap(options).join("\n")
   end
 
-  # Convert the array to a string with bullet points.
+  # Convert the array to a string with word wrap.
   # Returns: A string.
   def format_output_word_wrap(options = {})
     format_output_raw_word_wrap(options).join("\n")
   end
 
+  # Convert the array to strings with word wrap.
   # Returns: An array of strings.
-  # This method is a duplicate of a bullet point method with a new name.
   def format_output_raw_word_wrap(options = {})
     result = []
 
